@@ -195,10 +195,10 @@ docker_list_vims:
 travis_test:
 	@ret=0; \
 	  travis_run_make() { \
-	    echo 'travis_fold:start:script.$$1"; \
+	    echo "travis_fold:start:script.$$1"; \
 	    echo "== Running \"make $$2\" =="; \
-	    echo make $$2 || return; \
-	    echo 'travis_fold:end:script.$$1"; \
+	    make $$2 || return; \
+	    echo "travis_fold:end:script.$$1"; \
 	  }; \
 	  travis_run_make neovim-v0.2.0 "docker_test DOCKER_VIM=neovim-v0.2.0" || (( ret+=1  )); \
 	  travis_run_make neovim-v0.1.7 "docker_test DOCKER_VIM=neovim-v0.1.7" || (( ret+=2  )); \
